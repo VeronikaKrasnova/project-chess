@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://smtsr3oho7qv"]
+
+[ext_resource type="Texture2D" uid="uid://bfalxam22wq83" path="res://assets/highlight_tile.png" id="1_vk1kp"]
+
+[node name="HighlightTile" type="Node2D"]
+
+[node name="Highlight" type="Sprite2D" parent="."]
+position = Vector2(355, 272)
+texture = ExtResource("1_vk1kp")
