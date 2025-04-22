@@ -39,16 +39,20 @@ func on_tile_clicked(target_cell: Vector2i):
 	clear_highlights()
 
 
-# Подцветка ходов
+# Подсветка ходов пешки
 
 func on_pawn_left_click():
 	clear_highlights()
 	
-	var forward_cell := pawn_cell + Vector2i(0, 1)
-	if is_cell_in_bounds(forward_cell):
-		add_highlight(forward_cell)
+	var forward_cell_1 := pawn_cell + Vector2i(0, 1)
+	add_highlight(forward_cell_1)
+	
+	# Если пешка в начальной позиции (например, y == 1)
+	if pawn_cell.y == 1:
+		var forward_cell_2 := pawn_cell + Vector2i(0, 2)
+		add_highlight(forward_cell_2)
 
-
+# подсветка хода
 func add_highlight(cell: Vector2i):
 	var highlight = highlight_scene.instantiate()
 	highlight.cell = cell
