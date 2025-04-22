@@ -29,20 +29,21 @@ func screen_to_cell(pos: Vector2) -> Vector2i:
 func set_piece_to_cell(piece: Node2D, cell: Vector2i):
 	var corrected_y = 7 - cell.y
 	var cell_position = board_origin + Vector2(cell.x, corrected_y) * tile_size
+	@warning_ignore("integer_division")
 	piece.position = cell_position + Vector2(tile_size / 2, tile_size / 2)
 
 # Движение пешки на 1 клетку вперёд
-#func move_pawn_forward():
-#	if pawn_cell.y < 7:
-#		pawn_cell.y += 1
-#		set_piece_to_cell($Pawn, pawn_cell)
+func on_tile_clicked(target_cell: Vector2i):
+	pawn_cell = target_cell
+	set_piece_to_cell($Pawn, pawn_cell)
+	clear_highlights()
 
 
 # Подцветка ходов
 
 func on_pawn_left_click():
 	clear_highlights()
-
+	
 	var forward_cell := pawn_cell + Vector2i(0, 1)
 	if is_cell_in_bounds(forward_cell):
 		add_highlight(forward_cell)
@@ -50,6 +51,8 @@ func on_pawn_left_click():
 
 func add_highlight(cell: Vector2i):
 	var highlight = highlight_scene.instantiate()
+	highlight.cell = cell
+	highlight.tile_clicked.connect(on_tile_clicked)
 	set_piece_to_cell(highlight, cell)
 	add_child(highlight)
 	highlights.append(highlight)
