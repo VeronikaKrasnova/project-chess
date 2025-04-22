@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://ceac4kvjsfn6" path="res://script/highlight_tile.gd" id="2_lj3in"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lj3in"]
-size = Vector2(70, 70)
 
 [node name="HighlightTile" type="Area2D"]
 script = ExtResource("2_lj3in")

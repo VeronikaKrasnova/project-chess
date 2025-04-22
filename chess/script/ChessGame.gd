@@ -3,7 +3,7 @@ extends Node2D
 var tile_size := 70
 var board_origin := Vector2( 0, 0) # положение левого верхнего угла доски
 var board_size := Vector2(8, 8)  # Размер доски (8x8 клеток)
-var pawn_cell := Vector2i(2, 2) # Пешка
+var pawn_cell := Vector2i(2, 1) # Пешка
 
 var highlight_scene := preload("res://HighlightTile.tscn")
 var highlights := []
