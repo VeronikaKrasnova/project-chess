@@ -24,3 +24,47 @@ shape = SubResource("RectangleShape2D_1046u")
 position = Vector2(307, 18)
 texture = ExtResource("1_lul25")
 centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+offset_left = 179.0
+offset_top = 46.0
+offset_right = 235.0
+offset_bottom = 77.0
+text = "pause"
+
+[node name="PausePanel" type="Window" parent="CanvasLayer"]
+process_mode = 3
+mode = 1
+title = "pause"
+initial_position = 1
+size = Vector2i(200, 200)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PausePanel"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 20.0
+offset_right = 39.5
+offset_bottom = 86.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="continue" type="Button" parent="CanvasLayer/PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="restart" type="Button" parent="CanvasLayer/PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "restart"
+
+[node name="quit" type="Button" parent="CanvasLayer/PausePanel/VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PausePanel/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/PausePanel/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PausePanel/VBoxContainer/quit" to="." method="_on_quit_pressed"]

@@ -13,7 +13,6 @@ config_version=5
 config/name="chess"
 run/main_scene="uid://cmodhfpkjanov"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://assets/icon.svg"
 
 [dotnet]
 
