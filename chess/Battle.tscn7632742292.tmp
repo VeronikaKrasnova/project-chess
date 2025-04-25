@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmodhfpkjanov"]
+[gd_scene load_steps=10 format=3 uid="uid://cmodhfpkjanov"]
 
 [ext_resource type="Script" uid="uid://bpp1f53hny0ku" path="res://script/ChessGame.gd" id="1_1046u"]
-[ext_resource type="Texture2D" uid="uid://3fqswewc0wq3" path="res://assets/TestTable.jpg" id="1_lul25"]
 [ext_resource type="Texture2D" uid="uid://cc8ua7kqh1axm" path="res://assets/TestUnit.jpg" id="2_yh5fh"]
 [ext_resource type="Script" uid="uid://k7mu6dlh0u7x" path="res://script/pawn.gd" id="3_yh5fh"]
+[ext_resource type="Texture2D" uid="uid://copdamyfdmax4" path="res://assets/king.png" id="5_pjn1s"]
+[ext_resource type="Texture2D" uid="uid://w7v8dasn3uti" path="res://assets/TestTable.png" id="6_lrdw4"]
+[ext_resource type="Script" uid="uid://btemgxrnev3ly" path="res://script/king.gd" id="6_yflgj"]
+[ext_resource type="Script" uid="uid://djxxd371dcerp" path="res://rook.gd" id="7_3hmwm"]
+[ext_resource type="Texture2D" uid="uid://be4nor876sdc5" path="res://assets/Rook.jpg" id="7_lrdw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1046u"]
 size = Vector2(60, 60)
@@ -13,16 +17,34 @@ script = ExtResource("1_1046u")
 
 [node name="Pawn" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(502, 423)
+position = Vector2(840, 778)
 texture = ExtResource("2_yh5fh")
 script = ExtResource("3_yh5fh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pawn"]
 shape = SubResource("RectangleShape2D_1046u")
 
+[node name="King" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(940, 879)
+texture = ExtResource("5_pjn1s")
+script = ExtResource("6_yflgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King"]
+shape = SubResource("RectangleShape2D_1046u")
+
+[node name="Rook" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(643, 877)
+texture = ExtResource("7_lrdw4")
+script = ExtResource("7_3hmwm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rook"]
+shape = SubResource("RectangleShape2D_1046u")
+
 [node name="Board" type="Sprite2D" parent="."]
-position = Vector2(307, 18)
-texture = ExtResource("1_lul25")
+position = Vector2(562, 100)
+texture = ExtResource("6_lrdw4")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

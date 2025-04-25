@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://smtsr3oho7qv"]
+
+[ext_resource type="Texture2D" uid="uid://bfalxam22wq83" path="res://assets/highlight_tile.png" id="1_vk1kp"]
+[ext_resource type="Script" uid="uid://ceac4kvjsfn6" path="res://script/highlight_tile.gd" id="2_lj3in"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj3in"]
+size = Vector2(70, 70)
+
+[node name="HighlightTile" type="Area2D"]
+script = ExtResource("2_lj3in")
+
+[node name="highlight" type="Sprite2D" parent="."]
+texture = ExtResource("1_vk1kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lj3in")

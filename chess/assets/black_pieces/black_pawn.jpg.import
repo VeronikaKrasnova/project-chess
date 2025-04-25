@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fqswewc0wq3"
-path="res://.godot/imported/TestTable.jpg-6a71914322825a545facf3c6c3472082.ctex"
+uid="uid://bh5bho708q3ed"
+path="res://.godot/imported/black_pawn.jpg-6b671f69534ebd6c8d4fa34a8d7980df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TestTable.jpg"
-dest_files=["res://.godot/imported/TestTable.jpg-6a71914322825a545facf3c6c3472082.ctex"]
+source_file="res://assets/black_pieces/black_pawn.jpg"
+dest_files=["res://.godot/imported/black_pawn.jpg-6b671f69534ebd6c8d4fa34a8d7980df.ctex"]
 
 [params]
 

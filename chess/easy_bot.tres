@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Bot" load_steps=2 format=3 uid="uid://by3fiyy0mhq0f"]
+
+[ext_resource type="Script" uid="uid://cqo2wyvhw4b61" path="res://script/bot.gd" id="1_wlli5"]
+
+[resource]
+script = ExtResource("1_wlli5")
+metadata/_custom_type_script = "uid://cqo2wyvhw4b61"

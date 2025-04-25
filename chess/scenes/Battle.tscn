@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmodhfpkjanov"]
+
+[ext_resource type="Script" uid="uid://bpp1f53hny0ku" path="res://script/ChessGame.gd" id="1_2cxp4"]
+[ext_resource type="Texture2D" uid="uid://cc8ua7kqh1axm" path="res://assets/white_pieces/TestUnit.jpg" id="2_7xoqm"]
+[ext_resource type="Script" uid="uid://k7mu6dlh0u7x" path="res://script/pawn.gd" id="3_ob7dw"]
+[ext_resource type="Texture2D" uid="uid://copdamyfdmax4" path="res://assets/white_pieces/king.png" id="4_8umis"]
+[ext_resource type="Script" uid="uid://btemgxrnev3ly" path="res://script/king.gd" id="5_ora22"]
+[ext_resource type="Texture2D" uid="uid://be4nor876sdc5" path="res://assets/white_pieces/Rook.jpg" id="6_dpg7a"]
+[ext_resource type="Script" uid="uid://djxxd371dcerp" path="res://script/rook.gd" id="7_8h0x3"]
+[ext_resource type="Texture2D" uid="uid://w7v8dasn3uti" path="res://assets/TestTable.png" id="8_l0ske"]
+[ext_resource type="Texture2D" uid="uid://bh5bho708q3ed" path="res://assets/black_pieces/black_pawn.jpg" id="9_7xoqm"]
+[ext_resource type="Script" uid="uid://38o8sxe1ugc0" path="res://script/PauseMenu.gd" id="10_ob7dw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1046u"]
+size = Vector2(60, 60)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_2cxp4")
+
+[node name="Pawn" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(840, 778)
+texture = ExtResource("2_7xoqm")
+script = ExtResource("3_ob7dw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pawn"]
+shape = SubResource("RectangleShape2D_1046u")
+
+[node name="King" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(940, 879)
+texture = ExtResource("4_8umis")
+script = ExtResource("5_ora22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="King"]
+shape = SubResource("RectangleShape2D_1046u")
+
+[node name="Rook" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(643, 877)
+texture = ExtResource("6_dpg7a")
+script = ExtResource("7_8h0x3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rook"]
+shape = SubResource("RectangleShape2D_1046u")
+
+[node name="Board" type="Sprite2D" parent="."]
+position = Vector2(562, 100)
+texture = ExtResource("8_l0ske")
+centered = false
+
+[node name="Black_Pawn" type="Sprite2D" parent="."]
+position = Vector2(942, 279)
+texture = ExtResource("9_7xoqm")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("10_ob7dw")
+
+[node name="PauseButton" type="Button" parent="PauseMenu"]
+offset_left = 179.0
+offset_top = 46.0
+offset_right = 235.0
+offset_bottom = 77.0
+text = "pause"
+
+[node name="Window" type="Window" parent="PauseMenu"]
+process_mode = 2
+initial_position = 1
+size = Vector2i(200, 200)
+
+[node name="Panel" type="VBoxContainer" parent="PauseMenu/Window"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.0
+offset_top = 18.0
+offset_right = 41.0
+offset_bottom = 119.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="continue_button" type="Button" parent="PauseMenu/Window/Panel"]
+layout_mode = 2
+text = "Continue"
+
+[node name="restart_button" type="Button" parent="PauseMenu/Window/Panel"]
+layout_mode = 2
+text = "restart"
+
+[node name="quit_button" type="Button" parent="PauseMenu/Window/Panel"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="PauseMenu/PauseButton" to="PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Window/Panel/continue_button" to="PauseMenu" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Window/Panel/restart_button" to="PauseMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Window/Panel/quit_button" to="PauseMenu" method="_on_quit_button_pressed"]

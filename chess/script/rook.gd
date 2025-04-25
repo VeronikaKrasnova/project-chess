@@ -1,7 +1,7 @@
 extends Sprite2D
 
 func _ready():
-	texture = load("res://assets/white_pieces/TestUnit.jpg")
+	texture = load("res://assets/white_pieces/Rook.jpg")
 
 signal left_click  # create signal
 
