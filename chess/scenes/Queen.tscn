@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c744dun31ynee"]
+
+[ext_resource type="Texture2D" uid="uid://copdamyfdmax4" path="res://assets/white_pieces/queen.png" id="1_7rida"]
+[ext_resource type="Script" uid="uid://di8dfplndtywn" path="res://script/piece/queen.gd" id="1_gof1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovq8k"]
+size = Vector2(100, 100)
+
+[node name="Queen" type="Area2D" groups=["pieces"]]
+script = ExtResource("1_gof1y")
+
+[node name="Queen" type="Sprite2D" parent="."]
+texture = ExtResource("1_7rida")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ovq8k")

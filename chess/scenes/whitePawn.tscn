@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5g87chsprew5"]
+
+[ext_resource type="Texture2D" uid="uid://cc8ua7kqh1axm" path="res://assets/white_pieces/TestUnit.jpg" id="1_4ady8"]
+[ext_resource type="Script" uid="uid://k7mu6dlh0u7x" path="res://script/piece/pawn.gd" id="2_n2uqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra46r"]
+size = Vector2(100, 100)
+
+[node name="WhitePawn" type="Area2D" groups=["pieces"]]
+z_index = 1
+script = ExtResource("2_n2uqj")
+
+[node name="Pawn" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(3, 2)
+texture = ExtResource("1_4ady8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_ra46r")

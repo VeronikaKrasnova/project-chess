@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://brrfmgc8kmjry"]
+
+[ext_resource type="Script" uid="uid://btemgxrnev3ly" path="res://script/piece/king.gd" id="1_ayiy4"]
+[ext_resource type="Texture2D" uid="uid://25bhtsfsjhcw" path="res://assets/white_pieces/King.jpg" id="2_ayiy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gvqi"]
+size = Vector2(100, 100)
+
+[node name="King" type="Area2D" groups=["pieces"]]
+script = ExtResource("1_ayiy4")
+
+[node name="King" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_ayiy4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7gvqi")

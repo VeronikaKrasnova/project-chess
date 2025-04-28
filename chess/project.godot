@@ -23,6 +23,10 @@ window/size/viewport_height=1080
 
 project/assembly_name="chess"
 
+[global_group]
+
+pieces=""
+
 [rendering]
 
 renderer/rendering_method="mobile"
