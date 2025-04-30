@@ -1,15 +1,23 @@
 extends "res://script/Piece.gd"
 
-func get_possible_moves(occupied_cells: Array[Vector2i]) -> Array[Vector2i]:
+func get_possible_moves(occupied_cells: Array[Vector2i], enemies: Array[Vector2i]) -> Array[Vector2i]:
 	var moves: Array[Vector2i] = []
-	var forward = Vector2i(0, 1)
-	var one_ahead = cell + forward
-	if not one_ahead in occupied_cells and is_in_bounds(one_ahead):
-		moves.append(one_ahead)
+	var direction = is_white and 1 or -1
+	var forward = cell + Vector2i(0, direction)
 
-	if cell.y == 1:
-		var two_ahead = cell + forward * 2
-		if not two_ahead in occupied_cells and not one_ahead in occupied_cells and is_in_bounds(two_ahead):
-			moves.append(two_ahead)
+	# Простой ход вперед
+	if is_in_bounds(forward) and not forward in occupied_cells or forward in enemies:
+		moves.append(forward)
+	
+	var double_forward = cell + Vector2i(0, direction) * 2
+	if not forward in occupied_cells or forward in enemies:
+		if cell.y == 1:
+			moves.append(double_forward)
+
+	# Взятие по диагонали
+	for dx in [-1, 1]:
+		var diag = cell + Vector2i(dx, direction)
+		if diag in enemies:
+			moves.append(diag)
 
 	return moves

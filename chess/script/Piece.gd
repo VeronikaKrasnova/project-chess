@@ -1,4 +1,5 @@
 extends Node2D
+var is_white: bool = true
 
 signal left_click()
 
@@ -10,6 +11,7 @@ func _ready():
 	update_position()
 
 func set_cell(new_cell: Vector2i):
+	print(name, " переместилась с ", cell, " на ", new_cell)
 	cell = new_cell
 	update_position()
 
@@ -27,7 +29,7 @@ func _input_event(_viewport, event, _shape_idx):
 		left_click.emit()
 
 # --- Абстрактная функция ---
-func get_possible_moves(_occupied_cells: Array[Vector2i]) -> Array[Vector2i]:
+func get_possible_moves(_occupied_cells: Array[Vector2i], _enemies: Array[Vector2i]) -> Array[Vector2i]:
 	return []
 
 func is_in_bounds(c: Vector2i) -> bool:

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwawmvumauojk"]
+
+[ext_resource type="Texture2D" uid="uid://jl8t5ejudyav" path="res://assets/black_pieces/e52c793a65d1ac4db114be3f01776127.jpg" id="1_lnemw"]
+[ext_resource type="Script" uid="uid://btemgxrnev3ly" path="res://script/piece/king.gd" id="1_x5fh6"]
+
+[node name="King" type="Node2D" groups=["pieces"]]
+script = ExtResource("1_x5fh6")
+
+[node name="King" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_lnemw")

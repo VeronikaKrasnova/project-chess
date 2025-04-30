@@ -1,6 +1,6 @@
 extends "res://script/Piece.gd"
 
-func get_possible_moves(occupied_cells: Array[Vector2i]) -> Array[Vector2i]:
+func get_possible_moves(occupied_cells: Array[Vector2i], enemies: Array[Vector2i]) -> Array[Vector2i]:
 	var moves: Array[Vector2i] = []
 	var directions = [
 		Vector2i(1, 1),
@@ -9,10 +9,12 @@ func get_possible_moves(occupied_cells: Array[Vector2i]) -> Array[Vector2i]:
 		Vector2i(1, -1)
 	]
 	for dir in directions:
-		var current = cell
-		while true:
-			current += dir
-			if not is_in_bounds(current) or current in occupied_cells:
-				break
+		var current = cell + dir
+		while is_in_bounds(current):
+			if current in occupied_cells:
+				if current in enemies:
+					moves.append(current) # можно съесть врага
+				break # путь заблокирован
 			moves.append(current)
+			current += dir
 	return moves

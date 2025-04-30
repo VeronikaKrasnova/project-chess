@@ -26,7 +26,6 @@ project/assembly_name="chess"
 [global_group]
 
 pieces=""
-black_piece=""
 
 [rendering]
 

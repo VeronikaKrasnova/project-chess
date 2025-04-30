@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://f2tfqgcboxcr"]
+
+[ext_resource type="Script" uid="uid://btd2tm301puj4" path="res://script/piece/bishop.gd" id="1_pvby8"]
+[ext_resource type="Texture2D" uid="uid://bgua1l80r8u3s" path="res://assets/white_pieces/e52c793a65d1ac4db114be3f01776127.jpg" id="1_xu8v0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvby8"]
+size = Vector2(100, 100)
+
+[node name="Bishop" type="Area2D" groups=["pieces"]]
+script = ExtResource("1_pvby8")
+
+[node name="Bishop" type="Sprite2D" parent="."]
+texture = ExtResource("1_xu8v0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pvby8")

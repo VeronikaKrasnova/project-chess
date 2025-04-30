@@ -1,6 +1,6 @@
 extends "res://script/Piece.gd"
 
-func get_possible_moves(occupied_cells: Array[Vector2i]) -> Array[Vector2i]:
+func get_possible_moves(occupied_cells: Array[Vector2i], enemies: Array[Vector2i]) -> Array[Vector2i]:
 	var moves: Array[Vector2i] = []
 	var directions = [
 		Vector2i(2, 1),
@@ -14,6 +14,6 @@ func get_possible_moves(occupied_cells: Array[Vector2i]) -> Array[Vector2i]:
 	]
 	for dir in directions:
 		var target_cell = cell + dir
-		if is_in_bounds(target_cell) and not target_cell in occupied_cells:
+		if is_in_bounds(target_cell) and (not target_cell in occupied_cells or target_cell in enemies):
 			moves.append(target_cell)
 	return moves

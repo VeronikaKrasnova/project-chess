@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://0gfncr2ehord"]
-
-[ext_resource type="Texture2D" uid="uid://cvd30svs6xlj8" path="res://assets/black_pieces/knight.jpg" id="1_rmv2e"]
-
-[node name="Node2D" type="Node2D" groups=["black_piece"]]
-
-[node name="Knight" type="Sprite2D" parent="."]
-texture = ExtResource("1_rmv2e")

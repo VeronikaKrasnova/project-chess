@@ -1,18 +1,22 @@
-extends Resource
-class_name Bot
+extends Node
 
-# Позиция пешки
-var pawn_cell: Vector2i
-# Все занятые клетки на доске (включая короля и т.п.)
 var occupied_cells: Array[Vector2i] = []
+var board = null
 
-# Возвращает следующую клетку для хода
-func get_next_move() -> Vector2i:
-	var forward := pawn_cell + Vector2i(0, -1)
-	if forward not in occupied_cells and is_cell_in_bounds(forward):
-		return forward
-	return pawn_cell  # если не может сходить
+func get_next_move() -> void:
+	var black_pieces = get_tree().get_nodes_in_group("pieces").filter(func(p): return not p.is_white)
+	var white_pieces = get_tree().get_nodes_in_group("pieces").filter(func(p): return p.is_white)
 	
+	var enemies = []
 
-func is_cell_in_bounds(cell: Vector2i) -> bool:
-	return cell.x >= 0 and cell.x < 8 and cell.y >= 0 and cell.y < 8
+	for piece in black_pieces + white_pieces:
+		occupied_cells.append(piece.cell)
+		if piece.is_white:
+			enemies.append(piece.cell)
+
+	for piece in black_pieces:
+		var moves = piece.get_possible_moves(occupied_cells, enemies)
+		if moves.size() > 0:
+			var chosen_move = moves.pick_random()
+			piece.set_cell(chosen_move)
+			break

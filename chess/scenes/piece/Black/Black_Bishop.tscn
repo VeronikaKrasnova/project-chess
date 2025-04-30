@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://wlelsqsbxrrb"]
+
+[ext_resource type="Texture2D" uid="uid://dkk1x8kmdbxjk" path="res://assets/black_pieces/bishop.jpg" id="1_n4auy"]
+[ext_resource type="Script" uid="uid://btd2tm301puj4" path="res://script/piece/bishop.gd" id="1_ydo56"]
+
+[node name="Node2D" type="Node2D" groups=["pieces"]]
+script = ExtResource("1_ydo56")
+
+[node name="Bishop" type="Sprite2D" parent="."]
+texture = ExtResource("1_n4auy")
