@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wlelsqsbxrrb"]
+
+[ext_resource type="Texture2D" uid="uid://dkk1x8kmdbxjk" path="res://assets/black_pieces/bishop.jpg" id="1_n4auy"]
+
+[node name="Node2D" type="Node2D" groups=["black_piece"]]
+
+[node name="Bishop" type="Sprite2D" parent="."]
+texture = ExtResource("1_n4auy")
