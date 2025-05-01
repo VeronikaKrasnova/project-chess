@@ -1,5 +1,5 @@
 extends Node2D
-var is_white: bool = true
+var is_white: bool
 
 signal left_click()
 

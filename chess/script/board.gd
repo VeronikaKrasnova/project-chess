@@ -92,12 +92,12 @@ func spawn_piece(scene: PackedScene, cell: Vector2i, group_name: String = "") ->
 func spawn_black_piece(scene: PackedScene, cell: Vector2i, group_name: String = "") -> Node2D:
 	var piece = scene.instantiate()
 	piece.is_white = false
-	add_child(piece)
 	piece.cell = cell
 	piece.update_position()
 	piece.board_origin = board_origin
 	if group_name != "":
 		piece.add_to_group(group_name)
+	add_child(piece)
 	return piece
 
 
@@ -108,7 +108,10 @@ func on_piece_clicked(piece):
 
 	var all_pieces = get_tree().get_nodes_in_group("pieces")
 	@warning_ignore("shadowed_variable")
-
+	
+	occupied_cells.clear()
+	enemies.clear()
+	
 	for other_piece in all_pieces:
 		occupied_cells.append(other_piece.cell)
 		if other_piece.is_white != piece.is_white:
@@ -196,8 +199,20 @@ func bot_move():
 	get_black_pieces()
 	update_occupied_cells()
 
+	# Локальные списки, чтобы избежать глобальных ошибок
+	var current_enemy_cells: Array[Vector2i] = []
+	var current_friendly_cells: Array[Vector2i] = []
+
+	for piece in get_tree().get_nodes_in_group("pieces"):
+		if piece.is_white:
+			current_enemy_cells.append(piece.cell)
+		else:
+			current_friendly_cells.append(piece.cell)
+
 	for piece in black_pieces:
-		var moves = piece.get_possible_moves(occupied_cells, enemies)
+		var moves = piece.get_possible_moves(occupied_cells, current_enemy_cells)
+		moves = moves.filter(func(cell): return not cell in current_friendly_cells)
+
 		if moves.size() > 0:
 			var move = moves.pick_random()
 			var target = get_piece_at_cell(move)
@@ -207,4 +222,4 @@ func bot_move():
 
 			piece.set_cell(move)
 			update_occupied_cells()
-			break 
+			break

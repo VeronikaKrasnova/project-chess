@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://be71ywobuetj5"]
 
 [ext_resource type="Texture2D" uid="uid://bh5bho708q3ed" path="res://assets/black_pieces/black_pawn.jpg" id="1_f55cs"]
-[ext_resource type="Script" uid="uid://k7mu6dlh0u7x" path="res://script/piece/pawn.gd" id="1_le15c"]
+[ext_resource type="Script" uid="uid://dtjf2ouxrr21s" path="res://script/piece/black_pawn.gd" id="1_le15c"]
 
 [node name="Node2D" type="Node2D" groups=["pieces"]]
 script = ExtResource("1_le15c")
